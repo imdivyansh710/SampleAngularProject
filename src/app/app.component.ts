@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { flush } from '@angular/core/testing';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,4 +9,9 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'SampleAngularProject';
+  loadedFeature: string = 'recipe';
+
+  onNavigate(event: string) {
+    this.loadedFeature = event;
+  }
 }

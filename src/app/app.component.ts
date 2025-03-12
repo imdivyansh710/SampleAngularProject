@@ -9,9 +9,4 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'SampleAngularProject';
-  loadedFeature: string = 'recipe';
-
-  onNavigate(event: string) {
-    this.loadedFeature = event;
-  }
 }

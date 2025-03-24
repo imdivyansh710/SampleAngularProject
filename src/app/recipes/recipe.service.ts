@@ -9,20 +9,7 @@ export class RecipeService {
 
     recipesChanged = new Subject<Recipe[]>();
 
-    private recipes: Recipe[] = [
-        new Recipe("Test recipe",
-            "this is a sample test recipe",
-            "https://www.indianhealthyrecipes.com/wp-content/uploads/2023/09/egg-toast-recipe.jpg",
-            [new Ingredient("Meat", 1),
-            new Ingredient("French Fries", 20)]),
-        new Recipe("Test recipe 2",
-            "this is a sample test recipe 2",
-            "https://www.vegrecipesofindia.com/wp-content/uploads/2009/08/upma-recipe-2-500x375.jpg",
-            [new Ingredient("Buns", 2),
-            new Ingredient("Meat", 1)
-            ]
-        )
-    ];
+    private recipes: Recipe[] = [];
 
     constructor(private shoppingListService: ShoppingListService) { }
 

@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, Subject, tap, throwError } from "rxjs";
+import { BehaviorSubject, catchError, Subject, tap, throwError } from "rxjs";
 import { User } from "./user.model";
 
 export interface AuthResponse {
@@ -15,7 +15,8 @@ export interface AuthResponse {
 @Injectable({ providedIn: "root" })
 export class AuthService {
 
-    user = new Subject<User>();
+    //give access to previously emiited value, we have to pass some initial value also here
+    user = new BehaviorSubject<User>(null);
 
     constructor(private http: HttpClient) {
     }

@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, catchError, Subject, tap, throwError } from "rxjs";
 import { User } from "./user.model";
+import { Router } from "@angular/router";
 
 export interface AuthResponse {
     idToken: string,
@@ -18,7 +19,7 @@ export class AuthService {
     //give access to previously emiited value, we have to pass some initial value also here
     user = new BehaviorSubject<User>(null);
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private router: Router) {
     }
 
     signUp(email: string, password: string) {
@@ -53,6 +54,11 @@ export class AuthService {
                     resData.idToken, 
                     +resData.expiresIn);
             }))
+    }
+
+    logout() {
+        this.user.next(null);
+        this.router.navigate(['/auth']);
     }
 
     private handleAuthentication(email: string, userId: string, token: string, expiresIn: number) {

@@ -15,6 +15,9 @@ export interface AuthResponse {
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
+    isAuthenticated(): any {
+        throw new Error("Method not implemented.");
+    }
 
     //give access to previously emiited value, we have to pass some initial value also here
     user = new BehaviorSubject<User>(null);

@@ -5,6 +5,7 @@ import { SharedModule } from "./shared/shared.module";
 const appRoutes: Routes = [
     { path: '', redirectTo: '/recipe', pathMatch: 'full' },
     { path: 'recipe', loadChildren: () => import('./recipes/recipes.module').then(m => m.RecipeModule) },
+    { path: 'shopping-list', loadChildren: () => import('./shopping-list/shopping-list.module').then(m => m.ShoppingListModule) },
     ];
 
 @NgModule({

@@ -5,7 +5,6 @@ import { HeaderComponent } from './header/header.component';
 import { AppRouting } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
 import { AuthModule } from './auth/auth.module';
@@ -20,7 +19,6 @@ import { AuthModule } from './auth/auth.module';
     HttpClientModule,
     AppRouting,
     RouterModule,
-    ShoppingListModule,
     SharedModule,
     CoreModule,
     AuthModule

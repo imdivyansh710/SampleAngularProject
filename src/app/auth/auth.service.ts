@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, catchError, Subject, tap, throwError } from "rxjs";
 import { User } from "./user.model";
 import { Router } from "@angular/router";
+import { environment } from "../../environments/environment";
 
 export interface AuthResponse {
     idToken: string,
@@ -15,10 +16,8 @@ export interface AuthResponse {
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
-    isAuthenticated(): any {
-        throw new Error("Method not implemented.");
-    }
-
+   
+    apiKey: string = environment.apiKey;
     //give access to previously emiited value, we have to pass some initial value also here
     user = new BehaviorSubject<User>(null);
 
@@ -28,7 +27,7 @@ export class AuthService {
     }
 
     signUp(email: string, password: string) {
-        return this.http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCsDNKSP-LlX0fDwfJleWTuIk9rxbE-ARw'
+        return this.http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + this.apiKey
             , {
                 email: email,
                 password: password,
@@ -45,7 +44,7 @@ export class AuthService {
     }
 
     login(email: string, password: string) {
-        return this.http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCsDNKSP-LlX0fDwfJleWTuIk9rxbE-ARw',
+        return this.http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key='+ this.apiKey,
             {
                 email: email,
                 password: password,
